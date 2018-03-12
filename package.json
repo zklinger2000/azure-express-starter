@@ -1,0 +1,22 @@
+{
+  "name": "unity-nodejs",
+  "version": "0.0.1",
+  "description": "Nodejs application for use with a Unity game client.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d dist",
+    "start": "cross-env NODE_ENV=production node dist/buildScripts/nodeServer.js"
+  },
+  "author": "Zack Klinger",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "babel-cli": "6.22.2",
+    "babel-core": "6.22.1",
+    "babel-preset-env": "1.5.1",
+    "babel-register": "6.22.0",
+    "chalk": "2.3.2",
+    "cross-env": "5.1.4",
+    "express": "4.16.3"
+  }
+}
