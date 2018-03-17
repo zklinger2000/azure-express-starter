@@ -116,8 +116,7 @@ IF EXIST "%DEPLOYMENT_TEMP%\package.json" (
 
 :: 5. KuduSync to DEPLOYMENT_TARGET
 echo "Syncing site to Deployment Target"
-call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_TEMP%\dist"
--t "%DEPLOYMENT_TARGET%" -x true -i ".git;.hg;.deployment;deploy.cmd"
+call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_TEMP%\dist" -t "%DEPLOYMENT_TARGET%" -x true -i ".git;.hg;.deployment;deploy.cmd"
 IF !ERRORLEVEL! NEQ 0 goto error
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
