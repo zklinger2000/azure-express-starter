@@ -43,5 +43,5 @@ jspm_packages
 .env
 
 # Babel processed dist files
-#dist/
+dist/
 
