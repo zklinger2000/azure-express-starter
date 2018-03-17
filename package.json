@@ -7,7 +7,7 @@
     "url": "https://bitbucket.org/zklinger3000/unity-nodejs.git"
   },
   "engines": {
-    "node": ">= 6.9",
+    "node": ">= 6.9.1",
     "npm": ">= 5.6.0"
   },
   "main": "index.js",
