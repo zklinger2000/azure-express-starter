@@ -10,7 +10,7 @@ import config from '../config';
 // TODO: add tests
 
 // MongoDB Setup
-connectDB();
+// connectDB();
 
 // Express App setup
 const app = express();
