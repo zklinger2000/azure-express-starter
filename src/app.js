@@ -6,7 +6,6 @@ import bodyParser from 'body-parser';
 import routes from './routes/routes';
 import connectDB from './database/connectDB';
 // import config from '../config';
-import cors from 'cors';
 
 // TODO: add tests
 
