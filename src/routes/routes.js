@@ -11,7 +11,7 @@ const routes = (app) => {
   });
 
   app.get('/', function(req, res) {
-    res.send('<!DOCTYPE html><html><head></head><body><h1>{} Deployment</h1><a href="https://unity-nodejs.azurewebsites.net/api/noauth">Route example</a></body></html>');
+    res.send('<!DOCTYPE html><html><head></head><body><h1>{} Deployment</h1><a href="https://azure-express-dev.azurewebsites.net/api/noauth">Route example</a></body></html>');
   });
 
 };
