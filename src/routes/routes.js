@@ -1,4 +1,7 @@
 "use strict";
+import config from '../../config';
+
+console.log(`NODE_ENV=${config.nodeEnv}`);
 
 const routes = (app) => {
   //================
@@ -11,7 +14,7 @@ const routes = (app) => {
   });
 
   app.get('/', function(req, res) {
-    res.send('<!DOCTYPE html><html><head></head><body><h1>{} building</h1><a href="https://azure-express-dev.azurewebsites.net/api/noauth">Route example</a></body></html>');
+    res.send(`<!DOCTYPE html><html><head></head><body><h1>${config.nodeEnv}</h1><a href="https://azure-express-dev.azurewebsites.net/api/noauth">Route example</a></body></html>`);
   });
 
 };

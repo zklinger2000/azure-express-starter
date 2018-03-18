@@ -4,6 +4,13 @@ import express from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import routes from './routes/routes';
+import connectDB from './database/connectDB';
+import config from '../config';
+
+// TODO: add tests
+
+// MongoDB Setup
+connectDB();
 
 // Express App setup
 const app = express();

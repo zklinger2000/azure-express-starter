@@ -1,0 +1,107 @@
+# azure-express-dev
+
+Starter for developing an Express app with Microsoft Azure's App Service.
+It uses an npm script to build using Babel so you can write with the latest JavaScript features.
+There is an optional MongoDB example that you can use with CosmosDB on Azure.
+
+### Prerequisites
+
+What things you need to install the software and how to install them
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+```
+Give examples
+```
+
+### Installing
+
+A step by step series of examples that tell you have to get a development env running
+
+Say what the step will be
+
+## Deployment
+
+Add additional notes about how to deploy this on a live system
+
+1. Create an App Service on the Nodejs Stack for Linux with local git deployment
+1. Go to the app's console
+
+```cmd
+https://<your-app-name>.scm.azurewebsites.net
+```
+
+1. Go to the menu **Debug Console** -> **SSH**
+1. Use `vim` to edit the deploy.ssh
+1. Remove the `--production` flag from NPM install  
+`# 3. Install npm packages`
+
+```cmd
+  echo "Running $NPM_CMD install"
+```
+
+1. Add these lines after the line `"npm failed"`
+
+```cmd
+  echo "Running $NPM_CMD run build"
+  eval $NPM_CMD "run build"
+  exitWithMessageOnError "build failed"
+```
+
+
+1. Add to git remotes
+
+```
+Give the example
+```
+
+And repeat
+
+```
+until finished
+```
+
+End with an example of getting some data out of the system or using it for a little demo
+
+## Running the tests
+
+Explain how to run the automated tests for this system
+
+### Break down into end to end tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+### And coding style tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+## Contributing
+
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+
+## Authors
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## License
+
+UNLICENSED
+
+## Acknowledgments
+
+* Hat tip to anyone who's code was used
+* Inspiration
+* etc
