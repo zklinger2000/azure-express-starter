@@ -1,6 +1,9 @@
 {
-  "name"        : "worker",
-  "script"      : "./index.js",
+  "name"        : "azure-express-dev-worker",
+  "script"      : "dist/buildScripts/nodeServer.js",
+  "env": {
+    "NODE_ENV"  : "production"
+  },
   "instances"   : 1,
   "merge_logs"  : true,
   "log_date_format" : "YYYY-MM-DD HH:mm Z",
