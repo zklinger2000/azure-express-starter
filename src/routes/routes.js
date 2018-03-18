@@ -1,8 +1,6 @@
 "use strict";
 import config from '../../config';
 
-console.log(`NODE_ENV=${config.nodeEnv}`);
-
 const routes = (app) => {
   //================
   // Sample Routes
