@@ -56,7 +56,7 @@ goto Deployment
 
 IF DEFINED KUDU_SELECT_NODE_VERSION_CMD (
   :: The following are done only on Windows Azure Websites environment
-  call %KUDU_SELECT_NODE_VERSION_CMD% "%DEPLOYMENT_SOURCE%" "%DEPLOYMENT_TARGET%" "%DEPLOYMENT_TEMP%"
+  call %KUDU_SELECT_NODE_VERSION_CMD% "%DEPLOYMENT_SOURCE%\nodejs" "%DEPLOYMENT_TARGET%" "%DEPLOYMENT_TEMP%"
   IF !ERRORLEVEL! NEQ 0 goto error
 
   IF EXIST "%DEPLOYMENT_TEMP%\__nodeVersion.tmp" (
@@ -90,7 +90,7 @@ echo Handling node.js deployment.
 
 :: 1. KuduSync
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
-  call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_SOURCE%" -t "%DEPLOYMENT_TEMP%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
+  call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_SOURCE%\nodejs" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
   IF !ERRORLEVEL! NEQ 0 goto error
 )
 
@@ -98,26 +98,20 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
 call :SelectNodeVersion
 
 :: 3. Install npm packages
-IF EXIST "%DEPLOYMENT_TEMP%\package.json" (
-  pushd "%DEPLOYMENT_TEMP%"
+IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
+  pushd "%DEPLOYMENT_TARGET%"
   call :ExecuteCmd !NPM_CMD! install
   IF !ERRORLEVEL! NEQ 0 goto error
   popd
 )
 
-:: 4. Build the website
-IF EXIST "%DEPLOYMENT_TEMP%\package.json" (
-  pushd "%DEPLOYMENT_TEMP%"
-  echo "Building web site"
-  call npm run build
-  if !ERRORLEVEL! NEQ 0 goto error
+:: 4. Run Babel to build dist/ output
+IF EXIST "%DEPLOYMENT_TARGET%\package.json" (
+  call :ExecuteCmd !NPM_CMD! run build
+  IF !ERRORLEVEL! NEQ 0 goto error
   popd
 )
 
-:: 5. KuduSync to DEPLOYMENT_TARGET
-echo "Syncing site to Deployment Target"
-call :ExecuteCmd "%KUDU_SYNC_CMD%" -v 50 -f "%DEPLOYMENT_TEMP%" -t "%DEPLOYMENT_TARGET%" -x true -i ".git;.hg;.deployment;deploy.cmd"
-IF !ERRORLEVEL! NEQ 0 goto error
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 goto end
