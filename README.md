@@ -53,6 +53,11 @@ https://<your-app-name>.scm.azurewebsites.net
 
 1. Add to git remotes
 
+# FTP
+```ftps://waws-prod-mwh-007.ftp.azurewebsites.windows.net```
+
+**username must have site name in front!  
+Username:<app-name>\\\<deployment username>**
 ```
 Give the example
 ```
