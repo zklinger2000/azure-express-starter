@@ -1,10 +1,10 @@
 {
-  "name": "unity-nodejs",
+  "name": "azure-express-starter",
   "version": "0.0.1",
   "description": "Nodejs application for use with a Unity game client.",
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/zklinger3000/unity-nodejs.git"
+    "url": "https://bitbucket.org/zklinger3000/azure-express-starter.git"
   },
   "engines": {
     "node": ">= 8.1.0",
@@ -12,7 +12,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development node dist/buildScripts/nodeServer.js",
+    "dev": "node dist/buildScripts/nodeServer.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src -d dist",
     "start": "node dist/buildScripts/nodeServer.js"
@@ -27,7 +27,6 @@
     "body-parser": "1.18.2",
     "chalk": "2.3.2",
     "cors": "2.8.4",
-    "cross-env": "5.1.4",
     "dotenv": "5.0.1",
     "express": "4.16.3",
     "morgan": "1.9.0"
