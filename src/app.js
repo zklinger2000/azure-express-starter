@@ -10,7 +10,7 @@ import connectDB from './database/connectDB';
 // TODO: add tests
 
 // MongoDB Setup
-// connectDB();
+connectDB();
 
 // Express App setup
 const app = express();

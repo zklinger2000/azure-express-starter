@@ -1,5 +1,5 @@
 // Environment setup
-// require('dotenv').config({ silent: true });
+require('dotenv').config({ silent: true });
 // Hold application secrets and config
 module.exports = {
   port: process.env.PORT,
