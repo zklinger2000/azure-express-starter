@@ -1,6 +1,6 @@
 "use strict";
 import User from '../models/User';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 const usersController = {
 
