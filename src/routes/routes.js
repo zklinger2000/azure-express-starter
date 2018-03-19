@@ -20,7 +20,14 @@ const routes = (app) => {
   // User
   //=======
 
+  // Create
   app.post('/api/users/create', usersController.create);
+
+  // Read all
+  app.get('/api/users', usersController.read);
+
+  // Login
+  app.post('/api/users/login', usersController.login);
 
 };
 

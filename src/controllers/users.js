@@ -1,5 +1,6 @@
 "use strict";
-const User = require('../models/User');
+import User from '../models/User';
+import bcrypt from 'bcrypt';
 
 const usersController = {
 
@@ -10,26 +11,60 @@ const usersController = {
     User.findOne({ 'username': user.username })
     // Find or Create
       .then(foundUser => {
-        // If one does
+        // If one does exist
         if (foundUser) {
-          return res.status(409).send('User already exists');
+          res.status(409).send('User already exists');
         }
         // Else
         else {
-          // Save new User
-          const newUser = new User({
-            username: user.username,
-            password: user.password
-          });
-          return newUser.save(err => {
-            if (!err) res.status(200).send(newUser);
-          });
+          // Encrypt password
+          bcrypt.hash(user.password, 10)
+            .then(function(hash) {
+              // Save new User with hashed password
+              const newUser = new User({
+                username: user.username,
+                password: hash
+              });
+              newUser.save(err => {
+                if (err) {
+                  res.status(500).send(err);
+                } else {
+                  res.status(200).send(newUser);
+                }
+              });
+            });
         }
       })
       .catch(err => {
         res.status(500).send(err);
       });
+  },
+
+  read: (req, res) => {
+    // Find all users and remove unwanted fields from response
+    User.find({}, '-_id -__v -password')
+      .then(users => {
+        res.status(200).send(users);
+      })
+      .catch(err => {
+        res.status(500).send(err);
+      });
+  },
+
+  login: (req, res) => {
+    // Find user by username and password
+    User.findOne({ 'username': req.body.username })
+      .then(user => {
+        bcrypt.compare(req.body.password, user.password)
+          .then(response => {
+            res.status(200).send(response);
+          });
+      })
+      .catch(err => {
+        res.status(500).send(err);
+      });
   }
+
 };
 
 export default usersController;
