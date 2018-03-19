@@ -10,10 +10,6 @@ const userSchema = new Schema({
     validate: {
       validator: (name) => name.length > 2,
       message: 'Username must be longer than 2 characters'
-    },
-    unique: true,
-    index: {
-      unique: true
     }
   },
   password: {
