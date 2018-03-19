@@ -53,11 +53,17 @@ https://<your-app-name>.scm.azurewebsites.net
 
 1. Add to git remotes
 
+# Database
+
+1. To use Postman and make requests from local dev environment, add your
+IP address under the Firewall section in the Azure portal for the CosmosDB
+
 # FTP
 ```ftps://waws-prod-mwh-007.ftp.azurewebsites.windows.net```
 
 **username must have site name in front!  
-Username:<app-name>\\\<deployment username>**
+Username:<app-name\>\\\<deployment username\>**
+
 ```
 Give the example
 ```

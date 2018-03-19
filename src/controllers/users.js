@@ -21,7 +21,9 @@ const usersController = {
             username: user.username,
             password: user.password
           });
-          res.status(200).send(newUser);
+          return newUser.save(err => {
+            if (!err) res.status(200).send(newUser);
+          });
         }
       })
       .catch(err => {
