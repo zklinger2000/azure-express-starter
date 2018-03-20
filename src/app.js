@@ -3,6 +3,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
+import helmet from 'helmet';
 import routes from './routes/routes';
 import connectDB from './database/connectDB';
 // import config from '../config';
@@ -15,6 +16,8 @@ connectDB();
 // Initialize Express app
 const app = express();
 
+// Middleware for setting headers
+app.use(helmet());
 // Middleware for logging
 app.use(morgan('combined'));
 
