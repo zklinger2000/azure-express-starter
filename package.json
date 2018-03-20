@@ -12,6 +12,7 @@
   },
   "main": "index.js",
   "scripts": {
+    "predev": "babel-node src/buildScripts/startMessage.js",
     "dev": "nodemon src/buildScripts/nodeServer.js --exec babel-node",
     "lint": "esw src/buildScripts src/database src/routes src/app.js --color",
     "lint:watch": "npm run lint -- --watch",
