@@ -19,7 +19,7 @@ connectDB();
 const app = express();
 
 // Middleware for setting headers
-app.use(helmet());
+// app.use(helmet());
 
 // Middleware for logging
 app.use(morgan('combined'));
