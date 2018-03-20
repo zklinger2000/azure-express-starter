@@ -7,6 +7,8 @@ There is an optional MongoDB example that you can use with CosmosDB on Azure.
 ### Prerequisites
 
 What things you need to install the software and how to install them
+- Nodejs
+
 
 ## Getting Started
 

@@ -12,7 +12,7 @@ import connectDB from './database/connectDB';
 // MongoDB Setup
 connectDB();
 
-// Express App setup
+// Initialize Express app
 const app = express();
 
 // Middleware for logging
