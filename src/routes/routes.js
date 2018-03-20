@@ -1,6 +1,8 @@
 "use strict";
 import config from '../../config';
 import usersController from '../controllers/users';
+import passport from 'passport';
+import '../services/passport';
 
 const routes = (app) => {
   //================
@@ -27,7 +29,7 @@ const routes = (app) => {
   app.get('/api/users', usersController.read);
 
   // Login
-  app.post('/api/users/login', usersController.login);
+  app.post('/api/users/login', passport.authenticate('local'), usersController.login);
 
 };
 

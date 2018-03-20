@@ -52,17 +52,10 @@ const usersController = {
   },
 
   login: (req, res) => {
-    // Find user by username and password
-    User.findOne({ 'username': req.body.username })
-      .then(user => {
-        bcrypt.compare(req.body.password, user.password)
-          .then(response => {
-            res.status(200).send(response);
-          });
-      })
-      .catch(err => {
-        res.status(500).send(err);
-      });
+    res.status(200).send({
+      // TODO: Add jwtToken here
+      username: req.user.username
+    });
   }
 
 };
