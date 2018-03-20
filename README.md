@@ -22,6 +22,8 @@ A step by step series of examples that tell you have to get a development env ru
 
 Say what the step will be
 
+1. Mention .env file
+
 ## Deployment
 
 Add additional notes about how to deploy this on a live system
@@ -34,7 +36,7 @@ https://<your-app-name>.scm.azurewebsites.net
 ```
 
 1. Go to the menu **Debug Console** -> **SSH**
-1. Use `vim` to edit the deploy.ssh
+1. Use `vim` to edit the deploy.sh
 1. Remove the `--production` flag from NPM install  
 `# 3. Install npm packages`
 
