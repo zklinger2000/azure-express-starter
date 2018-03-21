@@ -4,6 +4,8 @@ import usersController from '../controllers/users';
 import passport from 'passport';
 import '../services/passport';
 
+const requireAuth = passport.authenticate('jwt', { session: false });
+
 const routes = (app) => {
   //================
   // Sample Routes
@@ -17,6 +19,10 @@ const routes = (app) => {
   app.get('/api/noauth', (req, res) => {
     res.json({ message: 'no authorization required' });
   });
+  // Authentication required
+  app.get('/api/me', requireAuth, (req, res) => {
+    res.json({ message: `${req.user.username} is authenticated`});
+  });
 
   //=======
   // User
@@ -26,7 +32,7 @@ const routes = (app) => {
   app.post('/api/users/create', usersController.create);
 
   // Read all
-  app.get('/api/users', usersController.read);
+  app.get('/api/users', requireAuth, usersController.read);
 
   // Login
   app.post('/api/users/login', passport.authenticate('local'), usersController.login);

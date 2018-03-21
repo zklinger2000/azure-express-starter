@@ -1,6 +1,13 @@
 "use strict";
+import jwt from 'jwt-simple';
 import User from '../models/User';
 import bcrypt from 'bcryptjs';
+import config from '../../config';
+
+const tokenForUser = (user) => {
+  const timestamp = new Date().getTime();
+  return jwt.encode({ sub: user.id, iat: timestamp }, config.appSecret);
+};
 
 const usersController = {
 
@@ -52,10 +59,8 @@ const usersController = {
   },
 
   login: (req, res) => {
-    res.status(200).send({
-      // TODO: Add jwtToken here
-      username: req.user.username
-    });
+    // Return a token with timestamp info
+    res.status(200).send({ token: tokenForUser(req.user) });
   }
 
 };
