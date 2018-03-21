@@ -1,13 +1,19 @@
 # azure-express-dev
 
 Starter for developing an Express app with Microsoft Azure's App Service.
-It uses an npm script to build using Babel so you can write with the latest JavaScript features.
-There is an optional MongoDB example that you can use with CosmosDB on Azure.
+It uses an npm script to build using Babel so you can write with the 
+latest JavaScript features.
+There is a User login example built with Passport that you can use with
+CosmosDB to save users, but written using the Mongoose API.
+
+In addition to the Passport login, this app returns a JWT token in the
+response to be used when making future requests for secure resources.
 
 ### Prerequisites
 
 What things you need to install the software and how to install them
 - Nodejs
+- MongoDB
 
 
 ## Getting Started
@@ -30,7 +36,16 @@ Say what the step will be
 
 Add additional notes about how to deploy this on a live system
 
+### Using /logstream
+The simplest way to get streaming logs is to use curl, e.g.
+
+```
+curl -u {username} https://{sitename}.scm.azurewebsites.net/api/logstream
+```
+
 1. Create an App Service on the Nodejs Stack for Linux with local git deployment
+1. Add `APP_SECRET` to application settings or the service will run but Passport
+will cause a constant `500 Internal Server Error`
 1. Go to the app's console
 
 ```cmd
@@ -59,14 +74,16 @@ https://<your-app-name>.scm.azurewebsites.net
 
 # Database
 
+1. Setup a CosmosDB
+1. TODO: Explain the `MONGODB_URI` application settings.
 1. To use Postman and make requests from local dev environment, add your
 IP address under the Firewall section in the Azure portal for the CosmosDB
 
 # FTP
 ```ftps://waws-prod-mwh-007.ftp.azurewebsites.windows.net```
 
-**username must have site name in front!  
-Username:<app-name\>\\\<deployment username\>**
+**username must have site name in front!**  
+Username: `<app-name>\<deployment username>`
 
 ```
 Give the example
