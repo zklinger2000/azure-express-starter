@@ -11,7 +11,7 @@ const routes = (app) => {
 
   // Home page
   app.get('/', (req, res) => {
-    res.send(`<!DOCTYPE html><html><head></head><body><h1>${config.nodeEnv}</h1><a href="${config.webAppUrl}/api/noauth">Route example</</body></html>`);
+    res.send(`<!DOCTYPE html><html><head></head><body><h1>${config.nodeEnv}</h1><a href="/api/noauth">Route example</</body></html>`);
   });
   // Returns JSON
   app.get('/api/noauth', (req, res) => {
